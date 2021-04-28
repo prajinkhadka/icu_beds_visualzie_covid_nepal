@@ -58,5 +58,28 @@ def data_from_date(data, curring_date, start_date, state):
 
     plt.savefig('Image.png',  bbox_inches='tight')
 
-
+def get_data_hospital_gandaki(hospital_name, date):
+    df = pd.read_excel("{}.xlsx".format(date))
+    d = df.columns[1]
+    df.rename(columns={'Unnamed: 0': "SN", d: 'Hospital', "Unnamed: 2":"Total ICU Bed", "Unnamed: 3":"Occupied ICU Bed", "Unnamed: 4":"Total Ventilator", "Unnamed: 5":"Occupied Ventilator", "Unnamed: 6":"Remarks"}, inplace=True)
+    df.drop(0, inplace=True)
+    df.drop(1, inplace=True)
+    (df.head(2))
+    names_of_hospitals = df.Hospital.unique()
+    dicts = df.to_dict(orient='records')
     
+    for i in range(len((dicts))):
+        if dicts[i]["Hospital"] == hospital_name:
+            dict_to_return = (dicts[i])
+            data_from_hosp = dict_to_return
+
+            
+    x = list(data_from_hosp.keys())[2:6]
+    title = list(data_from_hosp.values())[1]
+    y = list(data_from_hosp.values())[2:6]
+    fig = plt.figure(figsize=(10, 10))
+    plt.title(title)
+    plt.bar(x, y, color='green')
+    plt.savefig("Image2.png",  bbox_inches='tight')
+    
+  
