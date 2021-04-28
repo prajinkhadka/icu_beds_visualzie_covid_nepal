@@ -1,4 +1,5 @@
 # icu_beds_visualzie_covid_nepal
+# Live : http://52.230.87.133:8501/
 
 ## Build docker image:
 docker build -t covid-nepal-2021:v1 .
