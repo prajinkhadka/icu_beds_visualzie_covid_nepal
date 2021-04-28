@@ -7,7 +7,7 @@ from datetime import datetime, date, time
 import os 
 
 from main import data_from_date, get_data_hospital_gandaki
-data = pd.read_csv("main.csv")
+data = pd.read_csv("data/main.csv")
 start_date = date(2021, 4, 12)
 
 def main():
@@ -22,6 +22,7 @@ def main():
     print("type", type(start_date))
     
     if app_mode == "Gandaki":
+        st.write("Choose Date after After April 28 ( Included). Since, we only have data from hospitals after April 28")
         hosp_name = st.selectbox("",
         ["Choose Hospital", 'Pachhimanchal Community Hospital', 'Mediplus Hospital',
        'Parkland Hospital', 'Gandaki Medical College',
@@ -48,7 +49,7 @@ def main():
             st.image("Image.png")
             os.remove("Image.png")
 
-    st.text("Github Link: https://github.com/prajinkhadka/icu_beds_visualzie_covid_nepal")
+    st.text("Github Link:")
 
 
 if __name__ == "__main__":
